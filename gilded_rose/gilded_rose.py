@@ -9,11 +9,7 @@ class GildedRose(object):
                 self.reduceQualityIfNotSulfuras(item)
             elif item.quality < 50:
                     self.incrementItemQuality(item)
-                    if item.name == "Backstage passes to a TAFKAL80ETC concert":
-                        if item.sell_in < 11:
-                            self.improveQualityIfLessThan50(item)
-                        if item.sell_in < 6:
-                            self.improveQualityIfLessThan50(item)
+                    self.improveQualityForBackstagePasses(item)
 
             self.reduceSellInIfNotSulfuras(item)
 
@@ -25,6 +21,13 @@ class GildedRose(object):
                         self.setItemQualityToZero(item)
                 else:
                     self.improveQualityIfLessThan50(item)
+
+    def improveQualityForBackstagePasses(self, item):
+        if item.name == "Backstage passes to a TAFKAL80ETC concert":
+            if item.sell_in < 11:
+                self.improveQualityIfLessThan50(item)
+            if item.sell_in < 6:
+                self.improveQualityIfLessThan50(item)
 
     def reduceSellInIfNotSulfuras(self, item):
         if item.name != "Sulfuras, Hand of Ragnaros":
