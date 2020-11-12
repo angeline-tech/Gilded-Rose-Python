@@ -7,8 +7,7 @@ class GildedRose(object):
         for item in self.items:
             if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
                 self.reduceQualityIfNotSulfuras(item)
-            else:
-                if item.quality < 50:
+            elif item.quality < 50:
                     self.incrementItemQuality(item)
                     if item.name == "Backstage passes to a TAFKAL80ETC concert":
                         if item.sell_in < 11:
